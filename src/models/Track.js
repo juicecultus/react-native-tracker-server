@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const pointSchema = new mongoose.Schema({
-  timeStamp: Number,
+  timestamp: Number,
   coords: {
     latitude: Number,
     longitude: Number,
@@ -13,7 +13,7 @@ const pointSchema = new mongoose.Schema({
 });
 
 const trackSchema = new mongoose.Schema({
-  UserId: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
