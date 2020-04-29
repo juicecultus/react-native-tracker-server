@@ -1,8 +1,8 @@
+require('dotenv').config({ path: './.env' });
+require('./models/User');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
-require('dotenv').config({ path: './.env' });
 
 const authRoutes = require('./routes/authRoutes');
 
