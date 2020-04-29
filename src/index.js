@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 require('dotenv').config({ path: './.env' });
 
@@ -7,6 +8,7 @@ const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
+app.use(bodyParser.json());
 app.use(authRoutes);
 
 mongoose.connect(process.env.MONGO_URI, {
