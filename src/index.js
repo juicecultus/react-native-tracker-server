@@ -1,12 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
-require('dotenv').config();
+
+require('dotenv').config({ path: './.env' });
+
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
-const mongoUri =
-  'mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASS}@cluster0-kju2f.mongodb.net/test?retryWrites=true&w=majority';
-mongoose.connect(mongoUri, {
+app.use(authRoutes);
+
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
@@ -24,5 +27,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log('Listening on port 4000');
+  console.log('Listening on port 3000');
 });
